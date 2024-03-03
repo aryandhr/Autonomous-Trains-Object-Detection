@@ -8,7 +8,9 @@ First, you'll need to download the Intramotev repository using Git. If you don't
 
 Open a terminal or command prompt and run the following command to clone the repository:
 
+```bash
 git clone https://github.com/aryandhr/Intramotev.git
+```
 
 This command will create a local copy of the repository on your machine.
 
@@ -18,7 +20,9 @@ Next, we'll create a virtual environment using Conda. If you don't have Conda in
 
 Navigate to the directory where you cloned the repository and run the following command to create a Conda environment based on the provided environment.yml file:
 
+```bash
 conda env create --prefix ./envs --file Intramotev_env.yml
+```
 
 ## Step 3: Run the Test File
 
@@ -26,11 +30,15 @@ Once the environment is set up, you can run the test file to verify everything i
 
 Activate the environment by running the following command:
 
-conda activate ./envs
+```bash
+conda activate ./Intramotev_env.yml
+```
 
 Then, run the test file using Python:
 
+```bash
 python test.py
+```
 
 This will execute the test script and display the results.
 
