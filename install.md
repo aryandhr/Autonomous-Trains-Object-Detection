@@ -31,7 +31,7 @@ Once the environment is set up, you can run the test file to verify everything i
 Activate the environment by running the following command:
 
 ```bash
-conda activate ./Intramotev_env.yml
+conda activate ./envs
 ```
 
 Then, run the test file using Python:
