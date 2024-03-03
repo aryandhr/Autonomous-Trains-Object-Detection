@@ -1,9 +1,12 @@
-name: /mnt/ufs18/home-158/robe1157/anaconda3/envs/Intramotev_env
+name: /mnt/ufs18/home-158/robe1157/cmse495/Intramotev/envs
 channels:
   - defaults
 dependencies:
-  - python=3.9
   - ipykernel
   - jupyter
   - pandas
-prefix: /mnt/ufs18/home-158/robe1157/anaconda3/envs/Intramotev_env
+  - python=3.9
+  - conda-forge::ultralytics
+  - pytorch::pytorch
+  - pytorch::torchvision
+prefix: /mnt/ufs18/home-158/robe1157/cmse495/Intramotev/envs
