@@ -40,7 +40,7 @@ class LineDetector:
         # cv2.waitKey(0)
         # cv2.destroyAllWindows()
         cv2.imwrite('hough_output_image.jpg', processed_image)
-
+        return lines
 
     def detect_lines_video(self, video_path):
         cap = cv2.VideoCapture(video_path)
