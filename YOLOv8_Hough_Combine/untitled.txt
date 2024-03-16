@@ -1,0 +1,5 @@
+SOME QUICK DOCUMENTATION:
+
+If you uncomment lines 16-18 in hough_functions you will get some exciting errors that freeze up your kernel. ChatGPT says it's something to do with C++ so I ain't touching that stuff.
+
+By modifying the parameters in line 45 in hough_functions we can tune the functions to recognize only the tracks. On more realistic images such as car_tracks, I found that values of minLineLength=200, maxLineGap=5 works best. For the cities skylines image that is very NOT realistic, 100 and 10 respectively worked a little better. However these should be changed to fit whatever quality camera you are using.
