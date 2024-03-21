@@ -1,5 +1,6 @@
 import cv2
 import math
+import numpy as np
 
 class LineDetector:
     def __init__(self):
@@ -64,18 +65,20 @@ class LineDetector:
         height, width, _ = image.shape
         for line in lines:
             # Manually adjust the x and y values to reset the coordinate system to the main photo rather than the crop
-            line[0][0] += x_adj
-            line[0][1] += y_adj
-            line[0][2] += x_adj
-            line[0][3] += y_adj
-            x1, y1, x2, y2 = line[0]
+            # line = line[0]
+            line[0] += x_adj
+            line[1] += y_adj
+            line[2] += x_adj
+            line[3] += y_adj
+            x1, y1, x2, y2 = line
             if x2 - x1 != 0:  # Avoid division by zero
                 slope = (y2 - y1) / (x2 - x1)
-                intercept = y1 - slope * x1
+                # intercept = y1 - slope * x1
                 print(f"Line Detected with equation x = (y - {y1}) / {slope} + {x1}")
             else:
                 print(f"Vertical Line Detected at x = {x1}")
         cv2.imwrite('hough_output_image.jpg', processed_image)
+
         return lines
 
     def detect_lines_video(self, video_path):
@@ -113,14 +116,19 @@ class LineDetector:
         lines = cv2.HoughLinesP(edges, 1, math.pi / 180, 100, minLineLength=200, maxLineGap=10)
         if lines is not None:
             for line in lines:
-                x1, y1, x2, y2 = line[0]
+                line = line[0]
+                x1, y1, x2, y2 = line
                 cv2.line(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
+
+        lines = np.squeeze(lines)
+
         return frame, lines
 
-'''
+# '''
 # usage
-detector = LineDetector()
-image_path = 'Skylines_input_image.png'
-
-detector.detect_lines_image(image_path)
-'''
+# detector = LineDetector()
+# image_path = 'ana.png'
+#
+# lines = detector.detect_lines_image(image_path)
+# print(lines)
+# '''
