@@ -31,7 +31,7 @@ class LineDetector:
 
         return roi, roi_x, bottom_roi_height
     
-    def detect_lines_image(self, image_path, crop=True):
+    def detect_lines_image(self, image_path, crop=True, output = False):
         '''
         This function is responsible for cropping an image if needed and then detecting the railroad tracks in an image.
         The goal is to return just 2 sets of coordinates representing the 2 lines that are the tracks.
@@ -74,8 +74,10 @@ class LineDetector:
             if x2 - x1 != 0:  # Avoid division by zero
                 slope = (y2 - y1) / (x2 - x1)
                 # intercept = y1 - slope * x1
-                print(f"Line Detected with equation x = (y - {y1}) / {slope} + {x1}")
-            else:
+                if output:
+
+                    print(f"Line Detected with equation x = (y - {y1}) / {slope} + {x1}")
+            elif output:
                 print(f"Vertical Line Detected at x = {x1}")
         cv2.imwrite('hough_output_image.jpg', processed_image)
 
