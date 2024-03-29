@@ -79,7 +79,7 @@ class LineDetector:
                     print(f"Line Detected with equation x = (y - {y1}) / {slope} + {x1}")
             elif output:
                 print(f"Vertical Line Detected at x = {x1}")
-        cv2.imwrite('hough_output_image.jpg', processed_image)
+        #cv2.imwrite('hough_output_image.jpg', processed_image)
 
         return lines
 
@@ -116,11 +116,11 @@ class LineDetector:
         ###########################
         
         lines = cv2.HoughLinesP(edges, 1, math.pi / 180, 100, minLineLength=200, maxLineGap=10)
-        if lines is not None:
-            for line in lines:
-                line = line[0]
-                x1, y1, x2, y2 = line
-                cv2.line(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
+        #if lines is not None:
+        #    for line in lines:
+        #        line = line[0]
+        #        x1, y1, x2, y2 = line
+        #        cv2.line(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
 
         lines = np.squeeze(lines)
 

@@ -138,7 +138,7 @@ def putting_it_all_together(lines, y0, y1, d0):
     X = k_cluster_lines(lines)
     left_line, right_line = find_line_equations(X)
 
-    print(distance_estimation(X, y0, y1, d0))
-    print(turn_guesstimation(left_line.slope, right_line.slope))
+    distance = distance_estimation(X, y0, y1, d0)
+    direction = turn_guesstimation(left_line.slope, right_line.slope)
 
-    return
+    return distance, direction
