@@ -1,0 +1,73 @@
+{
+  "build": "h8c48613_1",
+  "build_number": 1,
+  "channel": "https://repo.anaconda.com/pkgs/main/osx-arm64",
+  "constrains": [],
+  "depends": [
+    "gmp >=6.2.1,<7.0a0",
+    "mpfr >=4.0.2,<5.0a0"
+  ],
+  "extracted_package_dir": "/opt/anaconda3/pkgs/mpc-1.1.0-h8c48613_1",
+  "files": [
+    "include/mpc.h",
+    "lib/libmpc.3.dylib",
+    "lib/libmpc.a",
+    "lib/libmpc.dylib",
+    "share/info/mpc.info"
+  ],
+  "fn": "mpc-1.1.0-h8c48613_1.conda",
+  "license": "LGPL-3-or-later",
+  "link": {
+    "source": "/opt/anaconda3/pkgs/mpc-1.1.0-h8c48613_1",
+    "type": 1
+  },
+  "md5": "142b9b9bd164eb32fa2240086ec997c9",
+  "name": "mpc",
+  "package_tarball_full_path": "/opt/anaconda3/pkgs/mpc-1.1.0-h8c48613_1.conda",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "include/mpc.h",
+        "path_type": "hardlink",
+        "sha256": "2822bb51fac89c972f6fe2ce3b3ff22bd91cad08fddffa10f29c58839bb0a3e6",
+        "sha256_in_prefix": "2822bb51fac89c972f6fe2ce3b3ff22bd91cad08fddffa10f29c58839bb0a3e6",
+        "size_in_bytes": 12898
+      },
+      {
+        "_path": "lib/libmpc.3.dylib",
+        "path_type": "hardlink",
+        "sha256": "1518cc15ad5bfa8ddb171445627610addafb920f66b51b133089f06be8cb948b",
+        "sha256_in_prefix": "1518cc15ad5bfa8ddb171445627610addafb920f66b51b133089f06be8cb948b",
+        "size_in_bytes": 130752
+      },
+      {
+        "_path": "lib/libmpc.a",
+        "path_type": "hardlink",
+        "sha256": "3e4e5d3cfbecbfaa19504117ef4ce1ba07fc46028f0cd5d181fbe37a4a69c966",
+        "sha256_in_prefix": "3e4e5d3cfbecbfaa19504117ef4ce1ba07fc46028f0cd5d181fbe37a4a69c966",
+        "size_in_bytes": 149160
+      },
+      {
+        "_path": "lib/libmpc.dylib",
+        "path_type": "softlink",
+        "sha256": "1518cc15ad5bfa8ddb171445627610addafb920f66b51b133089f06be8cb948b",
+        "size_in_bytes": 130752
+      },
+      {
+        "_path": "share/info/mpc.info",
+        "path_type": "hardlink",
+        "sha256": "661e792cc57d4703578a943aa2ba3fd9f87aa8c8ab9b1954e7b7c67f6a4d5789",
+        "sha256_in_prefix": "661e792cc57d4703578a943aa2ba3fd9f87aa8c8ab9b1954e7b7c67f6a4d5789",
+        "size_in_bytes": 88514
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "sha256": "09b7dbfe666a757c807fb92cb035ffc99ae07ee2aa03c1a4ce2d5733b86527b7",
+  "size": 106295,
+  "subdir": "osx-arm64",
+  "timestamp": 1628353319000,
+  "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/mpc-1.1.0-h8c48613_1.conda",
+  "version": "1.1.0"
+}

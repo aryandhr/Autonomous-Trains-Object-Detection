@@ -1,0 +1,214 @@
+{
+  "build": "py39hca03da5_0",
+  "build_number": 0,
+  "channel": "https://repo.anaconda.com/pkgs/main/osx-arm64",
+  "constrains": [],
+  "depends": [
+    "click >=6.0.0",
+    "google-auth >=1.0.0",
+    "python >=3.9,<3.10.0a0",
+    "requests-oauthlib >=0.7.0"
+  ],
+  "extracted_package_dir": "/opt/anaconda3/pkgs/google-auth-oauthlib-0.5.2-py39hca03da5_0",
+  "files": [
+    "bin/google-oauthlib-tool",
+    "lib/python3.9/site-packages/google_auth_oauthlib-0.5.2.dist-info/INSTALLER",
+    "lib/python3.9/site-packages/google_auth_oauthlib-0.5.2.dist-info/LICENSE",
+    "lib/python3.9/site-packages/google_auth_oauthlib-0.5.2.dist-info/METADATA",
+    "lib/python3.9/site-packages/google_auth_oauthlib-0.5.2.dist-info/RECORD",
+    "lib/python3.9/site-packages/google_auth_oauthlib-0.5.2.dist-info/REQUESTED",
+    "lib/python3.9/site-packages/google_auth_oauthlib-0.5.2.dist-info/WHEEL",
+    "lib/python3.9/site-packages/google_auth_oauthlib-0.5.2.dist-info/direct_url.json",
+    "lib/python3.9/site-packages/google_auth_oauthlib-0.5.2.dist-info/entry_points.txt",
+    "lib/python3.9/site-packages/google_auth_oauthlib-0.5.2.dist-info/top_level.txt",
+    "lib/python3.9/site-packages/google_auth_oauthlib/__init__.py",
+    "lib/python3.9/site-packages/google_auth_oauthlib/__pycache__/__init__.cpython-39.pyc",
+    "lib/python3.9/site-packages/google_auth_oauthlib/__pycache__/flow.cpython-39.pyc",
+    "lib/python3.9/site-packages/google_auth_oauthlib/__pycache__/helpers.cpython-39.pyc",
+    "lib/python3.9/site-packages/google_auth_oauthlib/__pycache__/interactive.cpython-39.pyc",
+    "lib/python3.9/site-packages/google_auth_oauthlib/flow.py",
+    "lib/python3.9/site-packages/google_auth_oauthlib/helpers.py",
+    "lib/python3.9/site-packages/google_auth_oauthlib/interactive.py",
+    "lib/python3.9/site-packages/google_auth_oauthlib/tool/__init__.py",
+    "lib/python3.9/site-packages/google_auth_oauthlib/tool/__main__.py",
+    "lib/python3.9/site-packages/google_auth_oauthlib/tool/__pycache__/__init__.cpython-39.pyc",
+    "lib/python3.9/site-packages/google_auth_oauthlib/tool/__pycache__/__main__.cpython-39.pyc"
+  ],
+  "fn": "google-auth-oauthlib-0.5.2-py39hca03da5_0.conda",
+  "license": "Apache-2.0",
+  "link": {
+    "source": "/opt/anaconda3/pkgs/google-auth-oauthlib-0.5.2-py39hca03da5_0",
+    "type": 1
+  },
+  "md5": "452b155583d418dc2e7ad6df6a6e94d2",
+  "name": "google-auth-oauthlib",
+  "package_tarball_full_path": "/opt/anaconda3/pkgs/google-auth-oauthlib-0.5.2-py39hca03da5_0.conda",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "bin/google-oauthlib-tool",
+        "file_mode": "text",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/var/folders/nz/j6p8yfhx1mv_0grj5xl4650h0000gp/T/abs_0av74z0qnx/croots/recipe/google-auth-oauthlib_1660687786936/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_place",
+        "sha256": "84dd06fadb810f82c705cdb058464e289be0109414103bf9c843aca7c48b5d4c",
+        "sha256_in_prefix": "9f7429c3effe4f1860b77a566aed94a45529a2f514d9fc2f8bdd1dcb4ca7ac81",
+        "size_in_bytes": 487
+      },
+      {
+        "_path": "lib/python3.9/site-packages/google_auth_oauthlib-0.5.2.dist-info/INSTALLER",
+        "path_type": "hardlink",
+        "sha256": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8",
+        "sha256_in_prefix": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8",
+        "size_in_bytes": 5
+      },
+      {
+        "_path": "lib/python3.9/site-packages/google_auth_oauthlib-0.5.2.dist-info/LICENSE",
+        "path_type": "hardlink",
+        "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "sha256_in_prefix": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "size_in_bytes": 11358
+      },
+      {
+        "_path": "lib/python3.9/site-packages/google_auth_oauthlib-0.5.2.dist-info/METADATA",
+        "path_type": "hardlink",
+        "sha256": "1d8371fcfbde57de538c3be3ef0c8ce3bc5b9f8a232c8171e69a9e4ac32ecbb7",
+        "sha256_in_prefix": "1d8371fcfbde57de538c3be3ef0c8ce3bc5b9f8a232c8171e69a9e4ac32ecbb7",
+        "size_in_bytes": 2744
+      },
+      {
+        "_path": "lib/python3.9/site-packages/google_auth_oauthlib-0.5.2.dist-info/RECORD",
+        "path_type": "hardlink",
+        "sha256": "71f551933036d4370759234b00d37321a8078d5a4335959bb001ad22869653aa",
+        "sha256_in_prefix": "71f551933036d4370759234b00d37321a8078d5a4335959bb001ad22869653aa",
+        "size_in_bytes": 1881
+      },
+      {
+        "_path": "lib/python3.9/site-packages/google_auth_oauthlib-0.5.2.dist-info/REQUESTED",
+        "path_type": "hardlink",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sha256_in_prefix": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_in_bytes": 0
+      },
+      {
+        "_path": "lib/python3.9/site-packages/google_auth_oauthlib-0.5.2.dist-info/WHEEL",
+        "path_type": "hardlink",
+        "sha256": "cfd8f4c406bf26650a3299b3ef62b464600b48cfe7fb04159866e5797c765478",
+        "sha256_in_prefix": "cfd8f4c406bf26650a3299b3ef62b464600b48cfe7fb04159866e5797c765478",
+        "size_in_bytes": 110
+      },
+      {
+        "_path": "lib/python3.9/site-packages/google_auth_oauthlib-0.5.2.dist-info/direct_url.json",
+        "path_type": "hardlink",
+        "sha256": "3b813cd31ad01a26d0bdf5a896303058a81802e35b0b69fa8ada26b35ca1a37d",
+        "sha256_in_prefix": "3b813cd31ad01a26d0bdf5a896303058a81802e35b0b69fa8ada26b35ca1a37d",
+        "size_in_bytes": 159
+      },
+      {
+        "_path": "lib/python3.9/site-packages/google_auth_oauthlib-0.5.2.dist-info/entry_points.txt",
+        "path_type": "hardlink",
+        "sha256": "0cbdc6453a771e0c0bc5d05908f933f68f2c2bd72710d64c9aed3d133028be49",
+        "sha256_in_prefix": "0cbdc6453a771e0c0bc5d05908f933f68f2c2bd72710d64c9aed3d133028be49",
+        "size_in_bytes": 88
+      },
+      {
+        "_path": "lib/python3.9/site-packages/google_auth_oauthlib-0.5.2.dist-info/top_level.txt",
+        "path_type": "hardlink",
+        "sha256": "ee874ab439df56a1d1de6c51b6ac746f1e95bb48eec3f8043990a4598c828dba",
+        "sha256_in_prefix": "ee874ab439df56a1d1de6c51b6ac746f1e95bb48eec3f8043990a4598c828dba",
+        "size_in_bytes": 21
+      },
+      {
+        "_path": "lib/python3.9/site-packages/google_auth_oauthlib/__init__.py",
+        "path_type": "hardlink",
+        "sha256": "4d35202a5f85d1e4c1c4199bc03c036c837e2f7dcb983e096cd2b05c4f879e05",
+        "sha256_in_prefix": "4d35202a5f85d1e4c1c4199bc03c036c837e2f7dcb983e096cd2b05c4f879e05",
+        "size_in_bytes": 846
+      },
+      {
+        "_path": "lib/python3.9/site-packages/google_auth_oauthlib/__pycache__/__init__.cpython-39.pyc",
+        "path_type": "hardlink",
+        "sha256": "d0881a8970313fd1f6aeef6b2d6935b48b191040e4bb33a276377e7a435d5ffd",
+        "sha256_in_prefix": "d0881a8970313fd1f6aeef6b2d6935b48b191040e4bb33a276377e7a435d5ffd",
+        "size_in_bytes": 426
+      },
+      {
+        "_path": "lib/python3.9/site-packages/google_auth_oauthlib/__pycache__/flow.cpython-39.pyc",
+        "path_type": "hardlink",
+        "sha256": "f43c7803e74a61dd5dbfba3f5785b6e50eda2c348681ccd5c05850e0dc604c0a",
+        "sha256_in_prefix": "f43c7803e74a61dd5dbfba3f5785b6e50eda2c348681ccd5c05850e0dc604c0a",
+        "size_in_bytes": 19241
+      },
+      {
+        "_path": "lib/python3.9/site-packages/google_auth_oauthlib/__pycache__/helpers.cpython-39.pyc",
+        "path_type": "hardlink",
+        "sha256": "a3b3f5bc1966d5310e78c751955207a1fb4178b99b37217f831a0ca300cc1d01",
+        "sha256_in_prefix": "a3b3f5bc1966d5310e78c751955207a1fb4178b99b37217f831a0ca300cc1d01",
+        "size_in_bytes": 4328
+      },
+      {
+        "_path": "lib/python3.9/site-packages/google_auth_oauthlib/__pycache__/interactive.cpython-39.pyc",
+        "path_type": "hardlink",
+        "sha256": "5f7868a049e7e84839b61f021a3d77ed431f1940d837434bcec059e0c82a593f",
+        "sha256_in_prefix": "5f7868a049e7e84839b61f021a3d77ed431f1940d837434bcec059e0c82a593f",
+        "size_in_bytes": 5563
+      },
+      {
+        "_path": "lib/python3.9/site-packages/google_auth_oauthlib/flow.py",
+        "path_type": "hardlink",
+        "sha256": "96c26da4b9cdccbe19e84212e71c7d5f1ca410b8552a10054f3040e8279203ff",
+        "sha256_in_prefix": "96c26da4b9cdccbe19e84212e71c7d5f1ca410b8552a10054f3040e8279203ff",
+        "size_in_bytes": 21296
+      },
+      {
+        "_path": "lib/python3.9/site-packages/google_auth_oauthlib/helpers.py",
+        "path_type": "hardlink",
+        "sha256": "cf59031e9ed46c9a3a91253827db340bf87e2edf9eeb131bb60908bc3a935205",
+        "sha256_in_prefix": "cf59031e9ed46c9a3a91253827db340bf87e2edf9eeb131bb60908bc3a935205",
+        "size_in_bytes": 5083
+      },
+      {
+        "_path": "lib/python3.9/site-packages/google_auth_oauthlib/interactive.py",
+        "path_type": "hardlink",
+        "sha256": "0085c4472c11d079936a22dd13da6ac4e343cb3a688a83be4f5bc16f5ccb911e",
+        "sha256_in_prefix": "0085c4472c11d079936a22dd13da6ac4e343cb3a688a83be4f5bc16f5ccb911e",
+        "size_in_bytes": 6086
+      },
+      {
+        "_path": "lib/python3.9/site-packages/google_auth_oauthlib/tool/__init__.py",
+        "path_type": "hardlink",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sha256_in_prefix": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_in_bytes": 0
+      },
+      {
+        "_path": "lib/python3.9/site-packages/google_auth_oauthlib/tool/__main__.py",
+        "path_type": "hardlink",
+        "sha256": "410cf99d7745cfb4911281b36c7a4a137318853d766d07242352987c05746ef5",
+        "sha256_in_prefix": "410cf99d7745cfb4911281b36c7a4a137318853d766d07242352987c05746ef5",
+        "size_in_bytes": 4257
+      },
+      {
+        "_path": "lib/python3.9/site-packages/google_auth_oauthlib/tool/__pycache__/__init__.cpython-39.pyc",
+        "path_type": "hardlink",
+        "sha256": "00a0abeeee01bc7dd86964c84f94f57a48a63b360546175a00f969ae2a1c9677",
+        "sha256_in_prefix": "00a0abeeee01bc7dd86964c84f94f57a48a63b360546175a00f969ae2a1c9677",
+        "size_in_bytes": 156
+      },
+      {
+        "_path": "lib/python3.9/site-packages/google_auth_oauthlib/tool/__pycache__/__main__.cpython-39.pyc",
+        "path_type": "hardlink",
+        "sha256": "10105f009a493244d76a90f673dd8329c6c667102f0b1cbaa81612cf9636915c",
+        "sha256_in_prefix": "10105f009a493244d76a90f673dd8329c6c667102f0b1cbaa81612cf9636915c",
+        "size_in_bytes": 3368
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "sha256": "704fbeac0b67e5dbe4b53224ff6013d511d60072f045a0c46ffa88656865e8f7",
+  "size": 26464,
+  "subdir": "osx-arm64",
+  "timestamp": 1660687810000,
+  "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/google-auth-oauthlib-0.5.2-py39hca03da5_0.conda",
+  "version": "0.5.2"
+}

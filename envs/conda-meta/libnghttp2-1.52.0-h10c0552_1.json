@@ -1,0 +1,106 @@
+{
+  "build": "h10c0552_1",
+  "build_number": 1,
+  "channel": "https://repo.anaconda.com/pkgs/main/osx-arm64",
+  "constrains": [],
+  "depends": [
+    "c-ares >=1.19.0,<2.0a0",
+    "c-ares >=1.7.5",
+    "libcxx >=14.0.6",
+    "libev >=4.11",
+    "libev >=4.33,<4.34.0a0",
+    "openssl >=1.1.1u,<1.1.2a",
+    "zlib >=1.2.13,<1.3.0a0"
+  ],
+  "extracted_package_dir": "/opt/anaconda3/pkgs/libnghttp2-1.52.0-h10c0552_1",
+  "files": [
+    "bin/nghttp",
+    "bin/nghttpd",
+    "bin/nghttpx",
+    "include/nghttp2/nghttp2.h",
+    "include/nghttp2/nghttp2ver.h",
+    "lib/libnghttp2.14.dylib",
+    "lib/libnghttp2.dylib",
+    "lib/pkgconfig/libnghttp2.pc"
+  ],
+  "fn": "libnghttp2-1.52.0-h10c0552_1.conda",
+  "license": "MIT",
+  "link": {
+    "source": "/opt/anaconda3/pkgs/libnghttp2-1.52.0-h10c0552_1",
+    "type": 1
+  },
+  "md5": "cc512893c229b30442b0660bbda7af22",
+  "name": "libnghttp2",
+  "package_tarball_full_path": "/opt/anaconda3/pkgs/libnghttp2-1.52.0-h10c0552_1.conda",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "bin/nghttp",
+        "path_type": "hardlink",
+        "sha256": "2e0be5b6ff27b56d82cde37ad3585405ed2e8f9208fd4d76b2c0c99276736bc8",
+        "sha256_in_prefix": "2e0be5b6ff27b56d82cde37ad3585405ed2e8f9208fd4d76b2c0c99276736bc8",
+        "size_in_bytes": 360208
+      },
+      {
+        "_path": "bin/nghttpd",
+        "path_type": "hardlink",
+        "sha256": "4e29cb670081264204b0625d232e338ed3a2e2fcdf10ceed43056b0e5f09d484",
+        "sha256_in_prefix": "4e29cb670081264204b0625d232e338ed3a2e2fcdf10ceed43056b0e5f09d484",
+        "size_in_bytes": 336080
+      },
+      {
+        "_path": "bin/nghttpx",
+        "file_mode": "binary",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/var/folders/nz/j6p8yfhx1mv_0grj5xl4650h0000gp/T/abs_578qz08bnh/croot/nghttp2_1686931430695/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh",
+        "sha256": "343056d49a5c7c9383f7518ba54ee7e06947c4b82dd7a655cb7e906bfcda8f96",
+        "sha256_in_prefix": "8619b82459aac48a38bae20f83fd06edaacfef8bb3a4d18c1c5fd18e38c7c4ce",
+        "size_in_bytes": 1192288
+      },
+      {
+        "_path": "include/nghttp2/nghttp2.h",
+        "path_type": "hardlink",
+        "sha256": "0d1d48c9ea099a6f4dbe39491b9c0f68f2c2a4b99898e568da34f59a9017029e",
+        "sha256_in_prefix": "0d1d48c9ea099a6f4dbe39491b9c0f68f2c2a4b99898e568da34f59a9017029e",
+        "size_in_bytes": 204305
+      },
+      {
+        "_path": "include/nghttp2/nghttp2ver.h",
+        "path_type": "hardlink",
+        "sha256": "2d15c1e5af4dc51d1cb7edc342c5f4bae8448c9cae78a2447cb9f9221e771603",
+        "sha256_in_prefix": "2d15c1e5af4dc51d1cb7edc342c5f4bae8448c9cae78a2447cb9f9221e771603",
+        "size_in_bytes": 1605
+      },
+      {
+        "_path": "lib/libnghttp2.14.dylib",
+        "path_type": "hardlink",
+        "sha256": "50dbc6a9e52a3cefc3edf33299d50c3d67f3ef18cba55686d7894ffae94c8e5f",
+        "sha256_in_prefix": "50dbc6a9e52a3cefc3edf33299d50c3d67f3ef18cba55686d7894ffae94c8e5f",
+        "size_in_bytes": 211216
+      },
+      {
+        "_path": "lib/libnghttp2.dylib",
+        "path_type": "softlink",
+        "sha256": "50dbc6a9e52a3cefc3edf33299d50c3d67f3ef18cba55686d7894ffae94c8e5f",
+        "size_in_bytes": 211216
+      },
+      {
+        "_path": "lib/pkgconfig/libnghttp2.pc",
+        "file_mode": "text",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/var/folders/nz/j6p8yfhx1mv_0grj5xl4650h0000gp/T/abs_578qz08bnh/croot/nghttp2_1686931430695/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh",
+        "sha256": "ad549baf97b8e45ef1662e70670491986b0f083a97e2b87dca1800212128f80d",
+        "sha256_in_prefix": "3c20815e673fe723d539c614706855bf14d12c3383c60f02bb0420bae8013cb7",
+        "size_in_bytes": 1633
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "sha256": "3872ee85d0028444645550d836fa64d7a9821139d08202a984e0e615c615e573",
+  "size": 643122,
+  "subdir": "osx-arm64",
+  "timestamp": 1686931613000,
+  "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/libnghttp2-1.52.0-h10c0552_1.conda",
+  "version": "1.52.0"
+}
