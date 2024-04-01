@@ -22,7 +22,7 @@ class LineDetector:
         roi_x = 2 * width // 5  # Starting x-coordinate of the ROI (left boundary of the middle fifth)
         roi_width = width // 5  # Width of the ROI (1/5 of the width of the image)
 
-        # Define the bottom 2/3 of the ROI
+        # Define the bottom half of the ROI
         bottom = height # The height of the image = the bottom coordinate
         bottom_roi_height = height//2  # Height of the bottom half
 
@@ -31,14 +31,13 @@ class LineDetector:
 
         return roi, roi_x, bottom_roi_height
     
-    def detect_lines_image(self, image_path, crop=True, output = False):
+    def detect_lines_image(self, image_path, crop=True):
         '''
-        This function is responsible for cropping an image if needed and then detecting the railroad tracks in an image.
-        The goal is to return just 2 sets of coordinates representing the 2 lines that are the tracks.
+        This function is responsible for detecting all lines that exist in a subset of the image.
         
         :param image_path: Path to image in your directory
         :param crop: Set to false if you want to detect lines in the whole image rather than subset for rails
-        :return: Cropped image according to rules specified within function.
+        :return: list of coordinates to the liens that were detected
         '''
         # Read in the image
         image = cv2.imread(image_path)
@@ -70,18 +69,52 @@ class LineDetector:
             line[1] += y_adj
             line[2] += x_adj
             line[3] += y_adj
-            x1, y1, x2, y2 = line
-            if x2 - x1 != 0:  # Avoid division by zero
-                slope = (y2 - y1) / (x2 - x1)
-                # intercept = y1 - slope * x1
-                if output:
-
-                    print(f"Line Detected with equation x = (y - {y1}) / {slope} + {x1}")
-            elif output:
-                print(f"Vertical Line Detected at x = {x1}")
+            
         #cv2.imwrite('hough_output_image.jpg', processed_image)
 
         return lines
+    
+    def detect_lines_video_frame(self, frame, crop=True):
+        '''
+        This function is responsible for detecting all lines that exist in a subset of a video frame.
+        
+        :param image_path: Path to image in your directory
+        :param crop: Set to false if you want to detect lines in the whole image rather than subset for rails
+        :return: list of coordinates to the liens that were detected
+        '''
+        # Read in the image
+        image = frame
+        
+        # Initialize x adjustment values to 0
+        # These values will be adjust the cropped coordinate system to the overall picture coordinate system
+        x_adj = 0
+        y_adj = 0
+        
+        # If image is None then we gots sum problems bby
+        if image is None:
+            print("Error opening image")
+            return
+        # If we are cropping then we should crop
+        elif crop:
+            image, x_tmp, y_tmp = self.crop_image(image)
+            # x_tmp as the code is currently written is the number of pixels that 2/5 of the image takes up horizontally
+            x_adj += x_tmp
+            # y_tmp is half the image height in pixels
+            y_adj += y_tmp
+            
+        # process the image and look for lines
+        processed_image, lines = self.process_frame(image)
+        height, width, _ = image.shape
+        for line in lines:
+            # Manually adjust the x and y values to reset the coordinate system to the main photo rather than the crop
+            # line = line[0]
+            line[0] += x_adj
+            line[1] += y_adj
+            line[2] += x_adj
+            line[3] += y_adj
+
+        return lines
+    
 
     def detect_lines_video(self, video_path):
         cap = cv2.VideoCapture(video_path)

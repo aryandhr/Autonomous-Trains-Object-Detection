@@ -77,6 +77,7 @@ def find_line_equations(X):
             left_line = X_group.mean(axis = 0).drop('group')
         elif slope > 0.05:
             right_line = X_group.mean(axis = 0).drop('group')
+        print(slope)
 
     return left_line, right_line
 
@@ -122,9 +123,7 @@ def turn_guesstimation(left_slope, right_slope):
     else:
         return "straight away"
 
-
-
-
+    
 def putting_it_all_together(lines, y0, y1, d0):
     """
 

@@ -38,7 +38,7 @@ results = model(image_path)
 
 # Apply the Hough Line Transform
 detector = LineDetector()
-lines = detector.detect_lines_image(image_path, crop=True, output = False)
+lines = detector.detect_lines_image(image_path)
 
 # Calculate Distances
 distance, direction = other_functions.putting_it_all_together(lines, 1700, 1000, 9.5)

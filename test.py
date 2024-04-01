@@ -7,7 +7,7 @@ import csv
 
 # Load a pretrained YOLO model (recommended for training)
 print("Loading pre-trained model...")
-model = YOLO('yolov8n.pt')
+model = YOLO('models/yolov8n.pt')
 
 # Perform object detection on an image using the model
 print("Performing Model Detection!...")
