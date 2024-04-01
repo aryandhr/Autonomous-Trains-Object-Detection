@@ -14,7 +14,7 @@ print("Performing Model Detection!...")
 results = model('https://ultralytics.com/images/bus.jpg')
 
 detected_objects = results[0].boxes
-csv_file_name = 'detected_objects.csv'
+csv_file_name = 'output/detected_objects.csv'
 object_names = results[0].names
 with open(csv_file_name, mode='w', newline='') as file:
     writer = csv.writer(file)
