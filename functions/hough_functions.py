@@ -24,7 +24,7 @@ class LineDetector:
 
         # Define the bottom half of the ROI
         bottom = height # The height of the image = the bottom coordinate
-        bottom_roi_height = height//2  # Height of the bottom half
+        bottom_roi_height = 2 * height//3  # Height of the bottom half
 
         # Crop the region of interest from the image
         roi = image[bottom_roi_height:bottom, roi_x:roi_x+roi_width]
@@ -74,7 +74,7 @@ class LineDetector:
 
         return lines
     
-    def detect_lines_video_frame(self, frame, crop=True):
+    def detect_lines_video_frame(self, frame, crop=True, blur=True):
         '''
         This function is responsible for detecting all lines that exist in a subset of a video frame.
         
@@ -96,14 +96,24 @@ class LineDetector:
             return
         # If we are cropping then we should crop
         elif crop:
+            if blur:
+                image = cv2.bilateralFilter(image, 8, 75, 75)
             image, x_tmp, y_tmp = self.crop_image(image)
             # x_tmp as the code is currently written is the number of pixels that 2/5 of the image takes up horizontally
             x_adj += x_tmp
             # y_tmp is half the image height in pixels
             y_adj += y_tmp
+            #image = cv2.fastNlMeansDenoisingColored(image, None, 10, 10, 7, 21)
+            
             
         # process the image and look for lines
         processed_image, lines = self.process_frame(image)
+        print(lines)
+        print(type(lines))
+        if lines.ndim == 0:
+            lines = []
+        elif isinstance(lines[0], np.int32):
+            lines = [lines]
         height, width, _ = image.shape
         for line in lines:
             # Manually adjust the x and y values to reset the coordinate system to the main photo rather than the crop
