@@ -1,8 +1,14 @@
 import argparse
 from importlib import reload
 from ultralytics import YOLO
+import functions.hough_functions
+import functions.other_functions
+
+reload(functions.hough_functions)
+reload(functions.other_functions)
+
+from functions.other_functions import DistanceEstimator
 from functions.hough_functions import LineDetector
-from functions import other_functions
 
 import numpy as np
 import pandas as pd
@@ -25,7 +31,7 @@ model = YOLO('models/yolov8n.pt')
 
 ################################################
 
-# LOAD IMAGE AND APPLY MODELs
+# LOAD IMAGE AND APPLY MODELS
 
 ################################################
 
@@ -41,7 +47,7 @@ detector = LineDetector()
 lines = detector.detect_lines_image(image_path)
 
 # Calculate Distances
-distance, direction = other_functions.putting_it_all_together(lines, 1700, 1000, 9.5)
+estimator = DistanceEstimator()
 
 ################################################
 
@@ -64,6 +70,7 @@ with open(csv_file_name, mode='w', newline='') as file:
         object_name = object_names.get(class_id, 'Unknown')
         
         # Write the object data to the CSV file
+        distance, direction = estimator.estimate_distance_direction(lines, image.shape[0], cords[1])
         writer.writerow([class_id, object_name, conf, *cords, distance])
 
 #################################################
@@ -96,7 +103,7 @@ for box in detected_objects:
 #################################################
 
 for line in lines:
-    x1, y1, x2, y2 = line
+    x1, y1, x2, y2 = line[0]
     cv2.line(image, (x1, y1), (x2, y2), (0, 255, 0), 2)
 
 #################################################

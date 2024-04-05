@@ -88,7 +88,7 @@ class LineDetector:
 
         #cv2.imwrite('hough_output_image.jpg', processed_image)
 
-        return filtered_lines
+        return np.array(filtered_lines)
     
     def detect_lines_video_frame(self, frame, crop=True, blur=True):
         '''
@@ -140,7 +140,7 @@ class LineDetector:
 
         # cv2.imwrite('hough_output_image.jpg', processed_image)
 
-        return filtered_lines
+        return np.array(filtered_lines)
     
 
     def detect_lines_video(self, video_path):
