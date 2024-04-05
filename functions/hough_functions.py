@@ -13,18 +13,18 @@ class LineDetector:
         Crops the bottom half of the middle 1/5th of the image.
         
         :param image: An image imported through cv2.imread()
-        :return: Cropped image according to rules specified within function.
+        :return: Cropped image according to rules specifiew/ithin function.
         '''
         # Get the dimensions of the image
         height, width = image.shape[:2]
 
         # Define the region of interest (ROI)
-        roi_x = 2 * width // 5  # Starting x-coordinate of the ROI (left boundary of the middle fifth)
-        roi_width = width // 5  # Width of the ROI (1/5 of the width of the image)
+        roi_x = width // 3  # Starting x-coordinate of the ROI (left boundary of the middle fifth)
+        roi_width = width // 3  # Width of the ROI (1/5 of the width of the image)
 
         # Define the bottom half of the ROI
         bottom = height # The height of the image = the bottom coordinate
-        bottom_roi_height = 2 * height//3  # Height of the bottom half
+        bottom_roi_height = height//2  # Height of the bottom half
 
         # Crop the region of interest from the image
         roi = image[bottom_roi_height:bottom, roi_x:roi_x+roi_width]
@@ -83,7 +83,7 @@ class LineDetector:
 
                 if slope is not None and intercept is not None:
                     # print(slope, intercept)
-                    if np.abs(slope) < .8 and intercept < 450 and intercept > 150:
+                    if np.abs(slope) < .8 and np.abs(slope) > .05 and intercept < 650 and intercept > 100:
                         line[0][0] += x_adj
                         line[0][1] += y_adj
                         line[0][2] += x_adj
@@ -94,7 +94,7 @@ class LineDetector:
         # cv2.imwrite('hough_output_image.jpg', processed_image)
 
         return np.array(filtered_lines)
-    
+        #return filtered_lines
 
     def detect_lines_video(self, video_path):
         cap = cv2.VideoCapture(video_path)
@@ -134,7 +134,7 @@ class LineDetector:
         edges = cv2.erode(edges, np.ones((3, 2), dtype=np.uint8))
 
         lines = cv2.HoughLinesP(edges, rho=1, theta=np.pi / 360, threshold=10,
-                                minLineLength=160, maxLineGap=10)
+                                minLineLength=150, maxLineGap=10)
 
 
         #if lines is not None:

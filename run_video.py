@@ -82,6 +82,8 @@ while cap.isOpened():
         detector = LineDetector()
         lines = detector.detect_lines_frame(image)
 
+        print(lines)
+
         # Calculate Distances
         distance = 0
         #distance, direction = other_functions.putting_it_all_together(lines, 1700, 1000, 9.5)
@@ -136,10 +138,10 @@ while cap.isOpened():
         # DRAW LINES
 
         #################################################
-        if not isinstance(lines, list):
-            for line in lines:
-                x1, y1, x2, y2 = line
-                cv2.line(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
+        #if not isinstance(lines, list):
+        for line in lines:
+            x1, y1, x2, y2 = line[0]
+            cv2.line(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
         
         
         ################################################
