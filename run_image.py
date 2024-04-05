@@ -72,7 +72,7 @@ object_names = results[0].names
 with open(csv_file_name, mode='w', newline='') as file:
     writer = csv.writer(file)
     
-    writer.writerow(['Class ID', 'Object Name','Confidence', 'X1', 'Y1', 'X2', 'Y2'])
+    writer.writerow(['Class ID', 'Object Name','Confidence','Distance','X1', 'Y1', 'X2', 'Y2'])
 
     for box in detected_objects:
         class_id = box.cls[0].item()
@@ -82,7 +82,7 @@ with open(csv_file_name, mode='w', newline='') as file:
         
         # Write the object data to the CSV file
         distance, direction = estimator.estimate_distance_direction(lines, image.shape[0], cords[1])
-        writer.writerow([class_id, object_name, conf, *cords, distance])
+        writer.writerow([class_id, object_name, conf, distance, *cords])
 
 print(f"{np.around(time.time() - start, 4)*1000} milliseconds writing to csv")
 #################################################
