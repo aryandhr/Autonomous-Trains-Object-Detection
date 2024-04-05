@@ -20,6 +20,8 @@ class DistanceEstimator:
         self.right_intercepts = deque(maxlen=deque_length)
         self.right_slopes = deque(maxlen=deque_length)
 
+        self.kmeans = KMeans(n_clusters=2, n_init=10)
+
         # should be a *constant or relatively unchanging value
         self.d0 = dist_to_cam
 
@@ -60,11 +62,10 @@ class DistanceEstimator:
             X.iloc[i,:] = self.slope_intercept(line)
 
         # perform unsupervised kmeans clustering (n=2) on the dataframe
-        kmeans = KMeans(n_clusters = 2, n_init = 10)
-        kmeans.fit(X)
+        self.kmeans.fit(X)
 
         # predict and save the output to X
-        X['group'] = kmeans.predict(X)
+        X['group'] = self.kmeans.predict(X)
 
         # failsafe
         left_line = None
