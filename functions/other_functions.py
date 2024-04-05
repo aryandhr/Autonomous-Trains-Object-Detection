@@ -55,7 +55,7 @@ def k_cluster_lines(lines):
     for i, line in enumerate(lines):
         X.iloc[i,:] = slope_intercept(line)
 
-    kmeans = KMeans(n_clusters = 3)
+    kmeans = KMeans(n_clusters = 2)
     kmeans.fit(X)
     X['group'] = kmeans.predict(X)
 

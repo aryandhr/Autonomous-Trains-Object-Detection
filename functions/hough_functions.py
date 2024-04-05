@@ -62,17 +62,33 @@ class LineDetector:
         # process the image and look for lines
         processed_image, lines = self.process_frame(image)
         height, width, _ = image.shape
-        for line in lines:
-            # Manually adjust the x and y values to reset the coordinate system to the main photo rather than the crop
-            # line = line[0]
-            line[0] += x_adj
-            line[1] += y_adj
-            line[2] += x_adj
-            line[3] += y_adj
-            
+
+        filtered_lines = []
+
+        if lines is not None:
+            for line in lines:
+                x1, y1, x2, y2 = line[0]
+                slope = None
+                intercept = None
+
+                if y2 - y1 != 0:
+                    slope = (x2 - x1) / (y2 - y1)
+                    intercept = x1 - slope * y1
+
+                if slope is not None and intercept is not None:
+                    # print(slope, intercept)
+                    if np.abs(slope) < .8 and intercept < 450 and intercept > 150:
+
+                        line[0][0] += x_adj
+                        line[0][1] += y_adj
+                        line[0][2] += x_adj
+                        line[0][3] += y_adj
+
+                        filtered_lines.append(line)
+
         #cv2.imwrite('hough_output_image.jpg', processed_image)
 
-        return lines
+        return filtered_lines
     
     def detect_lines_video_frame(self, frame, crop=True, blur=True):
         '''
@@ -82,48 +98,49 @@ class LineDetector:
         :param crop: Set to false if you want to detect lines in the whole image rather than subset for rails
         :return: list of coordinates to the liens that were detected
         '''
-        # Read in the image
-        image = frame
-        
+
         # Initialize x adjustment values to 0
         # These values will be adjust the cropped coordinate system to the overall picture coordinate system
         x_adj = 0
         y_adj = 0
-        
-        # If image is None then we gots sum problems bby
-        if image is None:
-            print("Error opening image")
-            return
+
         # If we are cropping then we should crop
-        elif crop:
-            if blur:
-                image = cv2.bilateralFilter(image, 8, 75, 75)
-            image, x_tmp, y_tmp = self.crop_image(image)
+        if crop:
+            frame, x_tmp, y_tmp = self.crop_image(frame)
             # x_tmp as the code is currently written is the number of pixels that 2/5 of the image takes up horizontally
             x_adj += x_tmp
             # y_tmp is half the image height in pixels
             y_adj += y_tmp
-            #image = cv2.fastNlMeansDenoisingColored(image, None, 10, 10, 7, 21)
-            
-            
-        # process the image and look for lines
-        processed_image, lines = self.process_frame(image)
-        print(lines)
-        print(type(lines))
-        if lines.ndim == 0:
-            lines = []
-        elif isinstance(lines[0], np.int32):
-            lines = [lines]
-        height, width, _ = image.shape
-        for line in lines:
-            # Manually adjust the x and y values to reset the coordinate system to the main photo rather than the crop
-            # line = line[0]
-            line[0] += x_adj
-            line[1] += y_adj
-            line[2] += x_adj
-            line[3] += y_adj
 
-        return lines
+        # process the image and look for lines
+        processed_image, lines = self.process_frame(frame)
+        height, width, _ = frame.shape
+
+        filtered_lines = []
+
+        if lines is not None:
+            for line in lines:
+                x1, y1, x2, y2 = line[0]
+                slope = None
+                intercept = None
+
+                if y2 - y1 != 0:
+                    slope = (x2 - x1) / (y2 - y1)
+                    intercept = x1 - slope * y1
+
+                if slope is not None and intercept is not None:
+                    # print(slope, intercept)
+                    if np.abs(slope) < .8 and intercept < 450 and intercept > 150:
+                        line[0][0] += x_adj
+                        line[0][1] += y_adj
+                        line[0][2] += x_adj
+                        line[0][3] += y_adj
+
+                        filtered_lines.append(line)
+
+        # cv2.imwrite('hough_output_image.jpg', processed_image)
+
+        return filtered_lines
     
 
     def detect_lines_video(self, video_path):
@@ -148,24 +165,32 @@ class LineDetector:
         cv2.destroyAllWindows()
 
     def process_frame(self, frame):
+
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        edges = cv2.Canny(gray, 50, 150)
-        
+
         ###########################
-        
+
         # MODIFY minLineLength and maxLineGap to tweak for the video/image you are running on
         # This will adjust Hough so that it can detect either less lines, or more lines
-        
+
         ###########################
-        
-        lines = cv2.HoughLinesP(edges, 1, math.pi / 180, 100, minLineLength=200, maxLineGap=10)
+
+
+        edges = cv2.Canny(gray, 150, 250)
+        edges = cv2.dilate(edges, np.ones((2, 3), dtype=np.uint8))
+        edges = cv2.erode(edges, np.ones((3, 2), dtype=np.uint8))
+
+        lines = cv2.HoughLinesP(edges, rho=1, theta=np.pi / 360, threshold=10,
+                                minLineLength=160, maxLineGap=10)
+
+
         #if lines is not None:
         #    for line in lines:
         #        line = line[0]
         #        x1, y1, x2, y2 = line
         #        cv2.line(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
-
-        lines = np.squeeze(lines)
+        #
+        # lines = np.squeeze(lines)
 
         return frame, lines
 
