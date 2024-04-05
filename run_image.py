@@ -46,7 +46,7 @@ print(f"{np.around(time.time() - start, 4)*1000} milliseconds loading in image")
 start = time.time()
 # Apply the YOLO object detection model
 results = model(image_path)
-print(f"{np.around(time.time() - start, 4)*1000} milliseconds running YOLO")
+print(f"{np.around(time.time() - start, 4)*1000} milliseconds detecting objects w/ YOLO")
 
 start = time.time()
 # Apply the Hough Line Transform
