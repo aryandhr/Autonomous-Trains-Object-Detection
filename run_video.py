@@ -80,7 +80,7 @@ while cap.isOpened():
 
         # Apply the Hough Line Transform
         detector = LineDetector()
-        lines = detector.detect_lines_video_frame(image)
+        lines = detector.detect_lines_frame(image)
 
         # Calculate Distances
         distance = 0

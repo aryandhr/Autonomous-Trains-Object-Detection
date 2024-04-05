@@ -40,57 +40,10 @@ class LineDetector:
         :return: list of coordinates to the liens that were detected
         '''
         # Read in the image
-        image = cv2.imread(image_path)
-        
-        # Initialize x adjustment values to 0
-        # These values will be adjust the cropped coordinate system to the overall picture coordinate system
-        x_adj = 0
-        y_adj = 0
-        
-        # If image is None then we gots sum problems bby
-        if image is None:
-            print("Error opening image")
-            return
-        # If we are cropping then we should crop
-        elif crop:
-            image, x_tmp, y_tmp = self.crop_image(image)
-            # x_tmp as the code is currently written is the number of pixels that 2/5 of the image takes up horizontally
-            x_adj += x_tmp
-            # y_tmp is half the image height in pixels
-            y_adj += y_tmp
-            
-        # process the image and look for lines
-        processed_image, lines = self.process_frame(image)
-        height, width, _ = image.shape
+        return self.detect_lines_frame(cv2.imread(image_path))
 
-        filtered_lines = []
 
-        if lines is not None:
-            for line in lines:
-                x1, y1, x2, y2 = line[0]
-                slope = None
-                intercept = None
-
-                if y2 - y1 != 0:
-                    slope = (x2 - x1) / (y2 - y1)
-                    intercept = x1 - slope * y1
-
-                if slope is not None and intercept is not None:
-                    # print(slope, intercept)
-                    if np.abs(slope) < .8 and intercept < 450 and intercept > 150:
-
-                        line[0][0] += x_adj
-                        line[0][1] += y_adj
-                        line[0][2] += x_adj
-                        line[0][3] += y_adj
-
-                        filtered_lines.append(line)
-
-        #cv2.imwrite('hough_output_image.jpg', processed_image)
-
-        return np.array(filtered_lines)
-    
-    def detect_lines_video_frame(self, frame, crop=True, blur=True):
+    def detect_lines_frame(self, frame, crop=True, blur=True):
         '''
         This function is responsible for detecting all lines that exist in a subset of a video frame.
         

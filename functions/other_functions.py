@@ -60,7 +60,7 @@ class DistanceEstimator:
             X.iloc[i,:] = self.slope_intercept(line)
 
         # perform unsupervised kmeans clustering (n=2) on the dataframe
-        kmeans = KMeans(n_clusters = 2)
+        kmeans = KMeans(n_clusters = 2, n_init = 10)
         kmeans.fit(X)
 
         # predict and save the output to X

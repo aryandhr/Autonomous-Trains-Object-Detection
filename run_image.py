@@ -1,6 +1,11 @@
 import argparse
 from importlib import reload
 from ultralytics import YOLO
+import numpy as np
+import pandas as pd
+import time
+import csv
+import cv2
 import functions.hough_functions
 import functions.other_functions
 
@@ -10,10 +15,6 @@ reload(functions.other_functions)
 from functions.other_functions import DistanceEstimator
 from functions.hough_functions import LineDetector
 
-import numpy as np
-import pandas as pd
-import csv
-import cv2
 
 parser = argparse.ArgumentParser(description='Detect objects in an image and save results to a CSV file.')
 parser.add_argument('--image', '-i', type=str, default='inputs/straight_object.png', help='Path to the input image file')
@@ -24,10 +25,11 @@ args = parser.parse_args()
 # BUILD / PULL MODEL
 
 ################################################
-
+start = time.time()
 model = YOLO('models/yolov8n.pt')
 #results = model.train(data='coco128.yaml', epochs=3)
 #results = model.val()
+print(f"{np.around(time.time() - start, 4)*1000} milliseconds loading in YOLO")
 
 ################################################
 
@@ -35,19 +37,27 @@ model = YOLO('models/yolov8n.pt')
 
 ################################################
 
+start = time.time()
 # Load the image
 image_path = args.image
 image = cv2.imread(image_path)
+print(f"{np.around(time.time() - start, 4)*1000} milliseconds loading in image")
 
+start = time.time()
 # Apply the YOLO object detection model
 results = model(image_path)
+print(f"{np.around(time.time() - start, 4)*1000} milliseconds running YOLO")
 
+start = time.time()
 # Apply the Hough Line Transform
 detector = LineDetector()
 lines = detector.detect_lines_image(image_path)
+print(f"{np.around(time.time() - start, 4)*1000} milliseconds detecting lines")
 
+start = time.time()
 # Calculate Distances
 estimator = DistanceEstimator()
+print(f"{np.around(time.time() - start, 4)*1000} milliseconds calculating distance")
 
 ################################################
 
@@ -55,6 +65,7 @@ estimator = DistanceEstimator()
 
 ################################################
 
+start = time.time()
 detected_objects = results[0].boxes
 csv_file_name = 'output/image_objects.csv'
 object_names = results[0].names
@@ -73,6 +84,7 @@ with open(csv_file_name, mode='w', newline='') as file:
         distance, direction = estimator.estimate_distance_direction(lines, image.shape[0], cords[1])
         writer.writerow([class_id, object_name, conf, *cords, distance])
 
+print(f"{np.around(time.time() - start, 4)*1000} milliseconds writing to csv")
 #################################################
 
 # DRAW BOUNDING BOXES
