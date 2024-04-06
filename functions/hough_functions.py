@@ -40,10 +40,10 @@ class LineDetector:
         :return: list of coordinates to the liens that were detected
         '''
         # Read in the image
-        return self.detect_lines_frame(cv2.imread(image_path))
+        return self.detect_lines_frame(cv2.imread(image_path), crop)
 
 
-    def detect_lines_frame(self, frame, crop=True, blur=True):
+    def detect_lines_frame(self, frame, crop=True):
         '''
         This function is responsible for detecting all lines that exist in a subset of a video frame.
         
@@ -84,6 +84,7 @@ class LineDetector:
                 if slope is not None and intercept is not None:
                     # print(slope, intercept)
                     if np.abs(slope) < .8 and np.abs(slope) > .05 and intercept < 650 and intercept > 100:
+                    # if np.abs(slope) < .8 and np.abs(slope) > 0.05:
                         line[0][0] += x_adj
                         line[0][1] += y_adj
                         line[0][2] += x_adj

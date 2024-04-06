@@ -81,13 +81,10 @@ with open(csv_file_name, mode='w', newline='') as file:
         object_name = object_names.get(class_id, 'Unknown')
         
         # Write the object data to the CSV file
-<<<<<<< HEAD
         distance, direction = estimator.estimate_distance_direction(lines, image.shape[0], cords[1])
         writer.writerow([class_id, object_name, conf, distance, *cords])
-=======
         distance, direction = estimator.estimate_distance_direction(lines, image.shape[0], cords[3])
         writer.writerow([class_id, object_name, conf, *cords, distance])
->>>>>>> b3fd3bba (Guys this works now!)
 
 print(f"{np.around(time.time() - start, 4)*1000} milliseconds writing to csv")
 #################################################
