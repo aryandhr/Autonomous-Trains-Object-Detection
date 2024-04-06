@@ -217,7 +217,7 @@ from ultralytics import YOLO
 
 def main(video_path):
     # Build YOLO, detector, and estimator
-    yolo_model = YOLO('models/yolov8n.pt')
+    yolo_model = YOLO('../models/yolov8n.pt')
     detector = LineDetector()
     estimator = DistanceEstimator()
     fa = FrameAnalyzer(yolo_model, detector, estimator)
@@ -226,7 +226,7 @@ def main(video_path):
     cap = cv2.VideoCapture(video_path)
 
     # Define output CSV file
-    csv_file_name = "output/video_objects.csv"
+    csv_file_name = "../output/video_objects.csv"
     with open(csv_file_name, mode='w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(['Frame', 'Class ID', 'Object Name', 'Confidence', 'X1', 'Y1', 'X2', 'Y2', 'Distance'])
@@ -234,7 +234,7 @@ def main(video_path):
     # Define output video writer
     frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-    out = cv2.VideoWriter('output/output_video.avi', cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), 30, (frame_width, frame_height))
+    out = cv2.VideoWriter('../output/output_video.avi', cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), 30, (frame_width, frame_height))
 
     frame_idx = 0  # Frame index
 

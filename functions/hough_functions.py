@@ -43,7 +43,7 @@ class LineDetector:
         return self.detect_lines_frame(cv2.imread(image_path))
 
 
-    def detect_lines_frame(self, frame, crop=True, blur=True):
+    def detect_lines_frame(self, frame, crop=True):
         '''
         This function is responsible for detecting all lines that exist in a subset of a video frame.
         
@@ -60,7 +60,7 @@ class LineDetector:
         # If we are cropping then we should crop
         if crop:
             frame, x_tmp, y_tmp = self.crop_image(frame)
-            # x_tmp as the code is currently written is the number of pixels that 2/5 of the image takes up horizontally
+            # x_tmp as the code is currently written is the number of pixels that 1/3 of the image takes up horizontally
             x_adj += x_tmp
             # y_tmp is half the image height in pixels
             y_adj += y_tmp
@@ -83,7 +83,7 @@ class LineDetector:
 
                 if slope is not None and intercept is not None:
                     # print(slope, intercept)
-                    if np.abs(slope) < .8 and np.abs(slope) > .05 and intercept < 650 and intercept > 100:
+                    if np.abs(slope) < .8 and np.abs(slope) > .05 and intercept < width/3*2 and intercept > width/3:
                         line[0][0] += x_adj
                         line[0][1] += y_adj
                         line[0][2] += x_adj
