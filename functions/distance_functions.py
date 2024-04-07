@@ -182,7 +182,7 @@ class DistanceEstimator:
         always stay constant, we can estimate the distance d1
         '''
 
-        return self.d0 * (w0/w1)
+        return max(0,self.d0 * (w0/w1))
 
 
 
