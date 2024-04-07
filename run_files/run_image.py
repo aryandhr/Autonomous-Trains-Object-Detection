@@ -1,6 +1,5 @@
 # Import necessary modules
 import cv2
-import csv
 import argparse
 from functions.distance_functions import DistanceEstimator
 from functions.hough_functions import LineDetector
@@ -30,7 +29,7 @@ def main(image_path):
 if __name__ == '__main__':
     # Parse command-line arguments
     parser = argparse.ArgumentParser(description='Detect objects in an image and save results to a CSV file.')
-    parser.add_argument('--image', '-i', type=str, default='inputs/straight_object.png',
+    parser.add_argument('--image', '-i', type=str, default='../inputs/straight_object.png',
                         help='Path to the input image file')
     args = parser.parse_args()
 
