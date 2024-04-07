@@ -8,11 +8,11 @@ import cv2
 
 # Load a pretrained YOLO model (recommended for training)
 print("Loading pre-trained model...")
-model = YOLO('models/yolov8n.pt')
+model = YOLO('../models/yolov8n.pt')
 
 # Perform object detection on an image using the model
 print("Performing Model Detection!...")
-image_path = 'inputs/bus.jpg'
+image_path = '../inputs/bus.jpg'
 image = cv2.imread(image_path)
 
 # Apply the model
