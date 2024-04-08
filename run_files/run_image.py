@@ -17,8 +17,8 @@ def main(image_path):
     image = cv2.imread(image_path)
 
     # Establish output file paths
-    csv_file_name = '../output/image_objects.csv'
-    image_output_path = '../output/processed_image.jpg'
+    csv_file_name = '../output/csvs/image_objects.csv'
+    image_output_path = '../output/videos_images/processed_image.jpg'
 
     # Run the frame analyzer on the image
     analyzed_image = fa.run_frame(image, csv_file_name)
