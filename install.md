@@ -47,9 +47,9 @@ Once the environment is set up, you can run the test file to verify everything i
 Then, run the test file using Python:
 
 ```bash
-python test.py
+python run_image.py
 ```
 
-This will execute the test script and display the results.
+This will execute the test script and display the results. The results will be stored in the output folder. You can view the csv file of all detected objects and the processed image.
 
 That's it! You've successfully installed Intramotev and run the test file. If you encounter any issues during the installation process, feel free to reach out for assistance.

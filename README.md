@@ -2,6 +2,25 @@
 
 This repository contains the work for our Michigan State University Data Science capstone project, a collaboration with Intramotev, a technology startup focusing on autonomous freight car manufacturing. The goal of this capstone course is to provide data science students real-world project experience to develop their technical and professional skills. In this project, our team is working alongside Intramotev to develop an accurate object detection system that can be used on footage from their autonomous trains. This object detection was achieved using the You Only Look Once (YOLO) algorithm that uses a combination of provided data with pre-trained data. The team utilized YOLO V8 to analyze video and life-feed footage, adding a bounding box around each object and storing detection results.
 
+# Structure
+
+The structure of the github repository is designed to be as easy to use as possible. In the home directory there are a couple important files. These relate to overall project information such as the installation instructions, the license, and the notebook that can replicate the pictures in our final reports and slides. 
+
+Past that there is a folder called run_files. This folder contains everything needed to run our project (except for an example video). Directly inside the folder you will see three .py files. Their purposes are listed below:
+
+1. run_image.py - Run our project on individual images
+2. run_video.py - Run our project on a video
+3. run_live.py - Run our project on a live stream from a webcam
+
+Instructions for using them are further in the README. Other folders of note are listed below with their descriptions as well:
+
+1. functions - Contains .py files that contain the necessary classes and functions to execute our main files.
+2. inputs - Example images that can be used in our main files.
+3. models - Contains the pre-trained YOLO model.
+4. output - The resulting figures, videos and csv files from running our main files.
+
+Unless iterating on our design, none of the functions or models should need to be modified. Obviously access to the input and output folders is critical for applying the project to different examples and viewing the results, but other than that, no other files should need to be modified!
+
 # Installation
 
 All packages and required dependencies are included in the provided yml environment. Once this repo is cloned, the environment is created, all files within the repository should be able to run.
@@ -30,6 +49,10 @@ python run_image.py --i 'your_image.png'
 If your image doesn't have rails in it, then it's not going to work. Our distance calculations relies on having railroad tracks in the image from a POV perspective.
 
 ## Running on Videos
+
+This doesn't exist right now!
+
+## Running with Webcam
 
 This doesn't exist right now!
 
