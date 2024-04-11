@@ -8,7 +8,7 @@ from ultralytics import YOLO
 
 def main(image_path):
     # Build YOLO, detector, and estimator
-    yolo_model = YOLO('../models/yolov8n.pt')
+    yolo_model = YOLO('models/yolov8n.pt')
     detector = LineDetector()
     estimator = DistanceEstimator()
     fa = FrameAnalyzer(yolo_model, detector, estimator)
@@ -17,8 +17,8 @@ def main(image_path):
     image = cv2.imread(image_path)
 
     # Establish output file paths
-    csv_file_name = '../output/csvs/image_objects.csv'
-    image_output_path = '../output/videos_images/processed_image.jpg'
+    csv_file_name = 'output/csvs/image_objects.csv'
+    image_output_path = 'output/videos_images/processed_image.jpg'
 
     # Run the frame analyzer on the image
     analyzed_image = fa.run_frame(image, csv_file_name)
@@ -29,7 +29,7 @@ def main(image_path):
 if __name__ == '__main__':
     # Parse command-line arguments
     parser = argparse.ArgumentParser(description='Detect objects in an image and save results to a CSV file.')
-    parser.add_argument('--image', '-i', type=str, default='../inputs/straight_object.png',
+    parser.add_argument('--image', '-i', type=str, default='inputs/straight_object.png',
                         help='Path to the input image file')
     args = parser.parse_args()
 

@@ -9,7 +9,7 @@ from ultralytics import YOLO
 
 def main(video_path):
     # Build YOLO, detector, and estimator
-    yolo_model = YOLO('../models/yolov8n.pt')
+    yolo_model = YOLO('models/yolov8n.pt')
     detector = LineDetector()
     estimator = DistanceEstimator()
     fa = FrameAnalyzer(yolo_model, detector, estimator)
@@ -18,7 +18,7 @@ def main(video_path):
     cap = cv2.VideoCapture(video_path)
 
     # Define output CSV file
-    csv_file_name = "../output/csvs/video_objects.csv"
+    csv_file_name = "output/csvs/video_objects.csv"
     with open(csv_file_name, mode='w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(['Frame', 'Class ID', 'Object Name', 'Confidence', 'X1', 'Y1', 'X2', 'Y2', 'Distance'])
@@ -26,7 +26,7 @@ def main(video_path):
     # Define output video writer
     frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-    out = cv2.VideoWriter('../output/videos_images/output_video.avi', cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), 30, (frame_width, frame_height))
+    out = cv2.VideoWriter('output/videos_images/output_video.avi', cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), 30, (frame_width, frame_height))
 
     frame_idx = 0  # Frame index
 
@@ -56,7 +56,7 @@ def main(video_path):
 if __name__ == '__main__':
     # Parse command line arguments
     parser = argparse.ArgumentParser(description='Detect objects in a video and save results to a CSV file.')
-    parser.add_argument('--video', '-v', type=str, default='../inputs/train_clip.mp4', help='Path to the input video file')
+    parser.add_argument('--video', '-v', type=str, default='inputs/train_clip.mp4', help='Path to the input video file')
     args = parser.parse_args()
 
     # Run the main function with the specified video path
