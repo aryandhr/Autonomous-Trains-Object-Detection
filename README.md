@@ -2,6 +2,8 @@
 
 This repository contains the work for our Michigan State University Data Science capstone project, a collaboration with Intramotev, a technology startup focusing on autonomous freight car manufacturing. The goal of this capstone course is to provide data science students real-world project experience to develop their technical and professional skills. In this project, our team is working alongside Intramotev to develop an accurate object detection system that can be used on footage from their autonomous trains. This object detection was achieved using the You Only Look Once (YOLO) algorithm that uses a combination of provided data with pre-trained data. The team utilized YOLO V8 to analyze video and life-feed footage, adding a bounding box around each object and storing detection results.
 
+![Project Image](project_image.png)
+
 # Structure
 
 The structure of the github repository is designed to be as easy to use as possible. In the home directory there are a couple important files. These relate to overall project information such as the installation instructions, the license, and the notebook that can replicate the pictures in our final reports and slides. 
