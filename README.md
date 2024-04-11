@@ -61,7 +61,7 @@ python run_video.py
 This will take the 'train_clip.mp4' video from the inputs folder that you should have placed in, and process it according to our algorithm. If you want to run the project on one of your own videos, you will need to add the video to the inputs folder and execute the following with the --i parameter.
 
 ```bash
-python run_image.py --i 'your_video.mp4'
+python run_video.py --i 'your_video.mp4'
 ```
 
 ## Running with Webcam
@@ -72,7 +72,7 @@ As with images and videos, all you need to do is enter the run_files directory i
 python run_live.py
 ```
 
-It should automatically access your webcam and parse through until you hit 'q' to end the stream and code. Note that unless you magically have a set of rails that works with our algorithm, it won't do a good job (if any) of detecting your distance. However, it will detect objects within the frame. The primary purpose of this code is to prove that our program works with live video and to show off our project with a live demo at the presentation day.
+It should automatically access your webcam and parse through until you hit 'q' to end the stream and code. Note that unless you magically have a set of rails that works with our algorithm, it won't do a good job (if any) of detecting your distance. However, it will detect objects within the frame. The primary purpose of this code is to prove that our program works with live video and to show off our project with a live demo for presentation to community partners.
 
 # Figure Generation
 
