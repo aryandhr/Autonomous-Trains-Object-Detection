@@ -1,3 +1,28 @@
+"""
+
+File: run_video.py
+
+Description: This script provides a comprehensive pipeline for detecting objects within a video, detecting lines using Hough Transform, and estimating distances to those objects. It processes video frames to identify and annotate objects, estimate their distance, and detect significant lines in each frame.
+
+Requirements:
+- OpenCV: For video processing and manipulation.
+- Ultralytics YOLO: For object detection tasks.
+- Custom Modules:
+  - distance_functions: Contains the DistanceEstimator class for estimating distances to detected objects.
+  - hough_functions: Contains the LineDetector class for line detection using Hough Transform.
+  - run_frame: Contains the FrameAnalyzer class that integrates object detection, line detection, and distance estimation.
+
+Usage:
+The script accepts a video file path as an input argument.
+
+Command Line Arguments:
+- --video, -v: Path to the input video file. Default is 'inputs/train_clip.mp4'.
+
+Output:
+- A CSV file ('output/csvs/video_objects.csv') containing details of the detected objects for each frame.
+- An output video ('output/videos_images/output_video.avi') showing the detected objects and lines for each frame.
+"""
+
 # Import necessary modules
 import cv2
 import csv

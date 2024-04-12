@@ -1,3 +1,30 @@
+"""
+
+File: run_image.py
+
+Description: This script provides a comprehensive pipeline for detecting objects within an image, detecting lines using Hough Transform, and estimating distances to those objects.
+
+Requirements:
+- OpenCV: For image processing and manipulation.
+- Ultralytics YOLO: For object detection tasks.
+- Custom Modules:
+  - distance_functions: Contains the DistanceEstimator class for estimating distances to detected objects.
+  - hough_functions: Contains the LineDetector class for line detection using Hough Transform.
+  - run_frame: Contains the FrameAnalyzer class that integrates object detection, line detection, and distance estimation.
+
+Usage:
+The script accepts an image file path as an input argument.
+
+Command Line Arguments:
+- --image, -i: Path to the input image file. Default is 'inputs/straight_object.png'.
+
+Output:
+- A CSV file ('output/csvs/image_objects.csv') containing details of the detected objects.
+- A processed image ('output/videos_images/processed_image.jpg') showing the detected objects and lines.
+
+"""
+
+
 # Import necessary modules
 import cv2
 import argparse

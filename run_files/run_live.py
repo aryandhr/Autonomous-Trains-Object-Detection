@@ -1,3 +1,27 @@
+"""
+File: run_live_video.py
+
+Description: This script implements a real-time video processing pipeline to detect objects, estimate distances, and detect lines using a live camera feed. It uses the YOLO (You Only Look Once) model for object detection, integrates custom line detection via Hough Transform, and estimates distances to detected objects.
+
+Requirements:
+- OpenCV: For capturing and processing video frames from a live camera feed.
+- Ultralytics YOLO: For real-time object detection.
+- Custom Modules:
+  - distance_functions: Contains the DistanceEstimator class for estimating distances to detected objects.
+  - hough_functions: Contains the LineDetector class for line detection using Hough Transform.
+  - run_frame: Contains the FrameAnalyzer class that integrates object detection, line detection, and distance estimation.
+
+Usage:
+The script continuously captures video frames from the default or specified camera, processes each frame to detect objects, estimate their distances, and detect lines, and displays the processed video in real time. The results are optionally saved in a CSV file and an output video file.
+
+Output:
+- A CSV file ('output/csvs/live_video_objects.csv') containing details of the detected objects for each frame.
+- An output video ('output/videos_images/output_live_video.avi') showing the detected objects and lines for each frame (optional).
+
+Controls:
+- Press 'q' to quit the live video feed and close the application.
+"""
+
 import cv2
 import csv
 from functions.distance_functions import DistanceEstimator
