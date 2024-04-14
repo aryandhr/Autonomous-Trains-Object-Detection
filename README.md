@@ -63,7 +63,7 @@ python run_video.py
 This will take the 'train_clip.mp4' video from the inputs folder that you should have placed in, and process it according to our algorithm. If you want to run the project on one of your own videos, you will need to add the video to the inputs folder and execute the following with the --i parameter.
 
 ```bash
-python run_video.py --i 'your_video.mp4'
+python run_video.py --video 'your_video.mp4'
 ```
 
 ## Running with Webcam
