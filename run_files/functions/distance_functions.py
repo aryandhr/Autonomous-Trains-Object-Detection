@@ -1,3 +1,25 @@
+"""
+A class for estimating distance to an object from a camera based on train track perspective in an image.
+
+Attributes:
+- deque_length (int): Number of previous line calculations to average.
+- dist_to_cam (float): Distance from camera to bottom of frame where tracks become visible.
+- left_line, right_line (list): Slope and intercept of left and right lines.
+- trajectory (str): Estimated direction of train tracks (left curve, right curve, straight track).
+
+Methods:
+- __init__(self, deque_length=10, dist_to_cam=9.5): Initialize the DistanceEstimator class.
+- analyze_lines(self, lines): Apply k_cluster equation to hough lines if lines > 0.
+- k_cluster_lines(self, lines): Cluster lines into left and right lines using KMeans clustering.
+- slope_intercept(self, line): Calculate slope and intercept of a line.
+- fit_line_equations(self): Update left and right lines based on previous frames' averages.
+- estimate_distance(self, y0, y1): Determine object distance based on track width at two y coordinates.
+- calculate_x(self, line, y): Calculate x value of a point on the line given y value.
+- calculate_distance(self, w0, w1): Calculate object distance using the law of similar triangles.
+- turn_guesstimation(self): Estimate direction of train tracks based on slopes of left and right lines.
+"""
+
+
 import pandas as pd
 import numpy as np
 from sklearn.cluster import KMeans
@@ -7,12 +29,12 @@ class DistanceEstimator:
 
     def __init__(self, deque_length = 10, dist_to_cam = 9.5):
         """
-
-        :param deque_length: How many previous line calculations do we want to be taking the average of when calculating
-            distance
-
-        :param dist_to_cam:
-             this is the distance from the camera to the bottom of the frame where the train tracks become visible
+        Initiates the class.
+        
+        :param deque_length: How many previous line calculations do we want to be 
+        taking the average of when calculating distance
+        :param dist_to_cam: This is the distance from the camera to the bottom of the
+        frame where the train tracks become visible
         """
         # information for storing slopes and intercepts of previous frames
         self.left_line = [None,None]
@@ -32,6 +54,8 @@ class DistanceEstimator:
 
     def analyze_lines(self,lines):
         """
+        Applies the k_cluster equation to the hough lines if lines > 0.
+        
         inputs lines, kcluster them, fit them to self object, guess on left or right turn
         :param lines: list of [x1,y1,x2,y2]
         :return: None
@@ -44,9 +68,10 @@ class DistanceEstimator:
 
     def k_cluster_lines(self, lines):
         """
-        this is a function that will intake a vector of subvectors
+        This is a function that will intake a vector of subvectors
         and then run k-means clustering on them to find the two lines
-        that can be used to calculate the distance of an object
+        that can be used to calculate the distance of an object.
+        
         :param lines: vector of subvectors containing [x1,y1,x2,y2]
         :return: slope and intercept for two values
         """
@@ -95,6 +120,8 @@ class DistanceEstimator:
 
     def slope_intercept(self, line):
         """
+        Calculates the slopes and intercepts of the line.
+        
         :param line: Coordinates [[x1, y1, x2, y2]] that define a line.
         :return: [slope, intercept]
         """
@@ -114,6 +141,9 @@ class DistanceEstimator:
 
     def fit_line_equations(self):
         """
+        If we find a new line in this frame, then we append to a list of 10 previous lines and use them
+        to calculate distance. However, if we don't find a new line this frame, 
+        we utilize the average of the previous 10 lines.
 
         :param left_line:
         :param right_line:
@@ -143,6 +173,9 @@ class DistanceEstimator:
 
     def estimate_distance(self, y0, y1):
         """
+        Determines the width between the two y coordiantes and then uses that information to calculate
+        the distance to the object.
+        
         :param y0: yvalue at the bottom of the screen
         :param y1: yvalue at the bottom of the bounding box of an object
         :return: estimation of distance from camera to object
@@ -163,23 +196,29 @@ class DistanceEstimator:
             return "Error: No Lines Detected"
 
     def calculate_x(self, line, y):
+        '''
+        Calculates the x value of a point on the line given the y value.
+        
+        :param lines: The lines that will be used.
+        :param y: The y value we want to find the associated x value with.
+        :return: The x value.
+        '''
         return line[0] + line[1] * y
 
 
     def calculate_distance(self, w0, w1):
         '''
-        :param w0: Width of the track in pixels at the edge of the screen (bottom)
-        :param w1: Width of the track in pixels at the bottom of the detected object
-        :return: Distance d1 at w1
-
-        this is a fun thing with trig, called the law of similar triangles
+        This is a fun thing with trig, called the law of similar triangles
         because we know the train tracks have the same width down the line in reality
         though in the image their lines aren't parallel due to perspective
         we can compare the widths of the tracks at two points, and by knowing
-        the distance of one of those points, we can find the distance of the other
-
+        the distance of one of those points, we can find the distance of the other 
         because the visible part of the train tracks at the bottom of the frame will *likely
-        always stay constant, we can estimate the distance d1
+        always stay constant, we can estimate the distance d1.
+        
+        :param w0: Width of the track in pixels at the edge of the screen (bottom)
+        :param w1: Width of the track in pixels at the bottom of the detected object
+        :return: Distance d1 at w1
         '''
 
         return max(0,self.d0 * (w0/w1))
@@ -188,12 +227,11 @@ class DistanceEstimator:
 
     def turn_guesstimation(self):
         """
-        given slope of left and right line, determine direction of train tracks
-        :return: left turn, right turn, straight track, or error no lines detected
-
+        Given slope of left and right line, determine direction of train tracks
         by analyzing the slopes in the left and right lines, we can estimate if we're
-        turning left, right, or going straight by checking which slope is steeper
-
+        turning left, right, or going straight by checking which slope is steeper.
+        
+        :return: left turn, right turn, straight track, or error no lines detected.
         """
         # this means that the right slope is more angled (x = intercept + slope * y) so it's turning left
         if None not in self.left_line and None not in self.right_line:

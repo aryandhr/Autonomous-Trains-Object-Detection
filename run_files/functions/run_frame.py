@@ -1,3 +1,25 @@
+"""
+A class for analyzing frames by applying YOLO object detection and Hough Line Transform.
+
+Attributes:
+- yolo: YOLO object detection model.
+- detector: Detector for applying Hough Line Transform.
+- estimator: DistanceEstimator object for estimating distances.
+
+Methods:
+- __init__(self, yolo, detector, estimator): Initialize the FrameAnalyzer class.
+- run_frame(self, frame, csv_path=None, n_frame=None): Analyze a frame, write detected objects to CSV,
+  and return the analyzed frame.
+
+Parameters:
+- frame: Frame in image or video format to analyze.
+- csv_path: Path to write CSV output (optional).
+- n_frame: Frame number for logging (optional).
+
+Returns:
+- Altered analyzed frame.
+"""
+
 import csv
 import cv2
 
@@ -11,6 +33,7 @@ class FrameAnalyzer:
         """
         Analyze a frame (image or video frame), write detected objects to CSV,
         and return the altered analyzed frame.
+        
         :param frame: Frame in image or video format to analyze
         :param csv_path: Path to write CSV output (optional)
         :return: Altered analyzed frame

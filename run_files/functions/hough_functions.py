@@ -1,3 +1,25 @@
+"""
+A class for detecting lines in images or video frames using the Hough Line Transform.
+
+Methods:
+- __init__(self): Initialize the LineDetector class.
+- crop_image(self, image): Crop the image to focus on a specific region of interest.
+- detect_lines_image(self, image_path, crop=True): Detect lines in an image.
+- detect_lines_frame(self, frame, crop=True): Detect lines in a video frame.
+- detect_lines_video(self, video_path): Process a video file to detect lines.
+- process_frame(self, frame): Apply line detection and Hough Transform to a frame.
+
+Parameters:
+- image: Image data loaded through cv2.imread().
+- image_path: Path to an image file.
+- frame: Video frame data.
+- crop: Boolean indicating whether to crop the image/frame for focused analysis.
+
+Returns:
+- Cropped image/frame if applicable.
+- List of coordinates of detected lines.
+"""
+
 import cv2
 import math
 import numpy as np
@@ -98,6 +120,12 @@ class LineDetector:
         #return filtered_lines
 
     def detect_lines_video(self, video_path):
+        '''
+        This isn't used in our intramotev project. Its purpose is to run the process_frame funtion on a video and that's it. 
+        Can't apply this to video frames.
+        
+        :param image_path: Path to video in your directory
+        '''
         cap = cv2.VideoCapture(video_path)
         if not cap.isOpened():
             print("Error opening video stream or file")
@@ -119,6 +147,12 @@ class LineDetector:
         cv2.destroyAllWindows()
 
     def process_frame(self, frame):
+        '''
+        This function is used to actually apply the line detection and hough transform to the frames for each input type.
+        
+        :param frame: The frame that needs to be processed
+        :return: The processed frame.
+        '''
 
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
