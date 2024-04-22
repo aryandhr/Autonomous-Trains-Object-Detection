@@ -31,11 +31,10 @@ Note that you can rename the environment whatever you please.
 
 ### Install packages
 
- You have now created and entered your virtual environment. Next run the following commands to install all the required pacakges and dependencies:
+ You have now created and entered your virtual environment. Next run the following commands to install all the required packages and dependencies:
 
 ```bash
-pip install ultralytics
-pip install scikit-learn 
+pip install -r requirements.txt 
 ```
 
 If you don't have pip installed, then you need to install pip using whatever tools your computer requires.
