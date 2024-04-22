@@ -22,6 +22,7 @@ Returns:
 
 import csv
 import cv2
+import os
 
 class FrameAnalyzer:
     def __init__(self, yolo, detector, estimator):
@@ -48,6 +49,11 @@ class FrameAnalyzer:
         self.estimator.analyze_lines(lines)
 
         object_distances = []
+        
+        # Check if csv_path is provided and if the file exists, clear its contents
+        if csv_path:
+            if os.path.exists(csv_path):
+                open(csv_path, 'w').close() 
 
         with open(csv_path, mode='a', newline='') as file:
             writer = csv.writer(file)

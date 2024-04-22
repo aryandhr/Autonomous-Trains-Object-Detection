@@ -52,7 +52,7 @@ def main():
     # Set up a video writer for output (optional)
     frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-    out = cv2.VideoWriter('output/output_live_video.avi', cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), 30, (frame_width, frame_height))
+  #  out = cv2.VideoWriter('output/output_live_video.avi', cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), 30, (frame_width, frame_height))
 
     frame_idx = 0  # Frame index
 
@@ -71,8 +71,8 @@ def main():
         cv2.imshow('Live Video Feed', analyzed_frame)
 
         # Write the analyzed frame to the output video (optional)
-        if out is not None:
-            out.write(analyzed_frame)
+ #       if out is not None:
+ #           out.write(analyzed_frame)
 
         # Break the loop if 'q' is pressed
         if cv2.waitKey(1) & 0xFF == ord('q'):
@@ -82,8 +82,8 @@ def main():
 
     # Clean up
     cap.release()  # Release the camera
-    if out is not None:
-        out.release()  # Release the output video writer
+    #if out is not None:
+    #    out.release()  # Release the output video writer
     cv2.destroyAllWindows()  # Close any open windows
 
 if __name__ == '__main__':
