@@ -78,10 +78,10 @@ class FrameAnalyzer:
 
                 if csv_path is not None and n_frame is None:
                     writer.writerow([self.estimator.trajectory, class_id, object_name,
-                                     conf, *cords, distance])
+                                     conf, distance, *cords])
                 elif csv_path is not None:
                     writer.writerow([n_frame, self.estimator.trajectory, class_id, object_name,
-                                     conf, *cords, distance])
+                                     conf, distance, *cords])
 
         # Draw bounding boxes and display object information on the frame
         for idx, box in enumerate(detected_objects):
