@@ -43,7 +43,7 @@ If you don't have pip installed, then you need to install pip using whatever too
 
 Once the environment is set up, you can run the test file to verify everything is set up correctly. Make sure to get your environment running or install all the packages as required above.
 
-Then, run the test file using Python:
+Then, move into the run_files directory in your terminal and run the test file using Python:
 
 ```bash
 python run_image.py
