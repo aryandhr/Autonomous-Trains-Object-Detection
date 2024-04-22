@@ -4,7 +4,7 @@ __pycache__/
 *$py.class
 
 # directories
-/output/videos_images/
+/output/
 
 # C extensions
 *.so
